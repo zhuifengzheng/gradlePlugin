@@ -1,0 +1,22 @@
+<idea-plugin>
+  <version>0.9</version>
+  <change-notes>Add change notes here.&lt;br&gt;
+      &lt;em&gt;most HTML tags may be used&lt;/em&gt;</change-notes>
+  <idea-version since-build="213.7172" until-build="213.*" />
+  <id>org.example.gradle</id>
+  <name>Plugin display name here</name>
+  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+  <description><![CDATA[Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>]]></description>
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+  <actions>
+    <action id="com.cn.TestAction" class="com.cn.TestAction" text="TestAction" description="com.cn.TestAction">
+      <add-to-group group-id="ViewMenu" anchor="first" />
+    </action>
+  </actions>
+</idea-plugin>
