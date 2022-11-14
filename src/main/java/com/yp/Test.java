@@ -1,4 +1,4 @@
-package com.cn;
+package com.yp;
 
 public class Test {
 }

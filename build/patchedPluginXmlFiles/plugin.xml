@@ -12,11 +12,38 @@
          on how to target different products -->
   <depends>com.intellij.modules.platform</depends>
   <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
+    <!-- tempplguin start-->
+    <!--        在打开项目前启动一次-->
+    <postStartupActivity implementation="com.yp.tempplugin.config.ProjectStartConfig" />
+    <!--        全局监听编辑器-->
+    <editorFactoryDocumentListener implementation="com.yp.tempplugin.config.EditorListenerConfig" />
+    <!--        创建一个tool窗口-->
+    <toolWindow factoryClass="com.yp.tempplugin.factory.TempPluginWindowsFactory" id="tempPluginWindowsFactory" anchor="right" icon="AllIcons.Actions.Colors" />
+    <!--在设置里配置插件的功能-->
+    <applicationConfigurable id="tempPluginId" displayName="Play Music Controller" instance="com.yp.tempplugin.ui.MusicControllerUi" groupId="tools" />
+    <!-- tempplguin end-->
+    <!-- sql start -->
+    <consoleFilterProvider implementation="com.yp.sql.JpaLogProvider" />
+    <toolWindow factoryClass="com.yp.sql.JpaToolWindow" id="JpaSqlLog" anchor="bottom" icon="/icons/logo2_1616.png" />
+    <!-- sql end -->
   </extensions>
   <actions>
-    <action id="com.cn.TestAction" class="com.cn.TestAction" text="TestAction" description="com.cn.TestAction">
+    <!-- view 菜单-->
+    <action id="com.yp.TestAction" class="com.yp.TestAction" text="TestAction" description="com.yp.TestAction">
       <add-to-group group-id="ViewMenu" anchor="first" />
     </action>
+    <!-- tempPlugin start -->
+    <action id="tempPlugin" class="com.yp.tempplugin.TempPlugin" text="点击这里" description="点击这里">
+      <add-to-group group-id="EditorPopupMenu" anchor="first" />
+    </action>
+    <!-- tempPlugin end -->
+    <!-- sql start -->
+    <action id="com.yp.sql.JpaSqlLogAction" class="com.yp.sql.JpaSqlLogAction" text="jpa sql log" description="格式化jpa生成的log，拼接为标准sql语句" icon="/icons/logo2_1616.png">
+      <add-to-group group-id="ConsoleView.PopupMenu" anchor="last" />
+    </action>
+    <action id="test" class="com.yp.TestAction" text="test" description="test">
+      <add-to-group group-id="ViewMenu" anchor="first" />
+    </action>
+    <!-- sql end -->
   </actions>
 </idea-plugin>
