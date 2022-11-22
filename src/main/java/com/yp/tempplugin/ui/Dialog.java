@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 /**
@@ -61,7 +62,7 @@ public class Dialog extends DialogWrapper {
         JLabel label = new JLabel(messageInDto.getData().get(0).getContent());
 
         // 设置窗口的大小
-        label.setPreferredSize(new Dimension(600, 400));
+        label.setPreferredSize(new Dimension(400, 200));
 
         // 将label放在这个画板上
         dialogPanel.add(label, BorderLayout.SOUTH);
@@ -69,8 +70,15 @@ public class Dialog extends DialogWrapper {
         JButton jButton = new JButton();
         jButton.setText("没事可以点一下这里");
 
-
         jButton.addActionListener(actionEven -> {
+            String actionCommand =
+                    actionEven.getActionCommand();
+            try {
+                actionCommand = new String(actionCommand.getBytes(), "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            System.out.println("actionCommon=>"+actionCommand);
             // fix 修改死循环导致内存溢出的问题
             if (new Dialog().showAndGet()) {
                 logger.info("点击就会出现问题的111");

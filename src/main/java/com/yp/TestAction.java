@@ -58,6 +58,7 @@ public class TestAction extends AnAction {
 
         // ------------------------------------------------------------------------------------
 
+        NotificationGroupManager.getInstance().getNotificationGroup("test").createNotification("测试通知", MessageType.INFO);
     }
 
 }
